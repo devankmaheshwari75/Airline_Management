@@ -1,16 +1,24 @@
-const express = requrie("express")
-const app = express()
+const express = require("express");
+
+require('dotenv').config()
 
 
-const PORT = 3000;
 
-app.get("/" ,(req,res) =>{
-    res.send("hey there its my home page ")
-    
-})
+const setUpAndStartServer = async () => {
+    const app = express();
+    const PORT = process.env.PORT;
+
+    app.get("/", (req, res) => {
+        res.send("hey there its my home page ")
+
+    })
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`)
+       
+
+    })
+
+}
 
 
-app.listen(PORT ,()=>{
-    console.log(`Server is running on port ${PORT}`)
-
-})
+setUpAndStartServer();
